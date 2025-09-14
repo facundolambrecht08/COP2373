@@ -1,0 +1,36 @@
+#Facundo_Lambercht
+# Cinema Ticket Pre-Sale Program
+# Each buyer can buy up to 4 tickets
+# Only 20 tickets available in total
+
+def buy_tickets(available):
+    """Ask the buyer how many tickets they want and return the number bought"""
+    tickets = int(input("How many tickets would you like (max 4)? "))
+    if tickets > 4:
+        print("you can only buy 4 tickets max.")
+        tickets = 4
+    if tickets > available:
+        print("Only", available, "tickets left, you will get that many.")
+        tickets = available
+    return tickets
+
+def show_remaining(available):
+    """Show how many tickets are still available"""
+    print("Tickets left:", available)
+
+def main():
+    total_tickets = 20
+    buyers = 0
+
+    while total_tickets > 0:  # loop until tickets are sold
+        print("\n--- New Buyer ---")
+        bought = buy_tickets(total_tickets)
+        total_tickets -= bought
+        buyers += 1
+        show_remaining(total_tickets)
+
+    print("\nAll tickets are sold out!")
+    print("Total buyers:", buyers)
+
+# Run the main function
+main()
