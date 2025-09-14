@@ -20,7 +20,7 @@ Enter "help" below or click "Help" above for more information.
 ...     print("Tickets left:", available)
 ... 
 ... def main():
-...     total_tickets = 20
+...     total_tickets = 10
 ...     buyers = 0
 ... 
 ...     while total_tickets > 0:  # loop until all tickets sold
