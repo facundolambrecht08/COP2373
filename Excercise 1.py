@@ -6,7 +6,7 @@ Enter "help" below or click "Help" above for more information.
 ... 
 ... def buy_tickets(available):
 ...     """Ask the buyer how many tickets they want and return the number bought"""
-...     tickets = int(input("How many tickets would you like (max 4)? "))
+...     tickets = int(input("Enter how many cinema tickets you want (maximum 4): "))
 ...     if tickets > 4:
 ...         print("Sorry, you can only buy 4 tickets max.")
 ...         tickets = 4
