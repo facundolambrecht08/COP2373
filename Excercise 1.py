@@ -20,13 +20,13 @@ Enter "help" below or click "Help" above for more information.
 ...     print("Tickets left:", available)
 ... 
 ... def main():
-...     total_tickets = 10
+...     tickets_left = 10
 ...     buyers = 0
 ... 
 ...     while total_tickets > 0:  # loop until all tickets sold
 ...         print("\n--- New Buyer ---")
-...         bought = buy_tickets(total_tickets)   # function call
-...         total_tickets -= bought               # accumulator
+...         bought = buy_tickets(tickets_left)   # function call
+...         tickets_left -= bought               # accumulator
 ...         buyers += 1                           # count buyers
 ...         show_remaining(total_tickets)         # function call
 ... 
