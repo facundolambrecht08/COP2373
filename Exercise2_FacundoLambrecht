@@ -1,0 +1,48 @@
+# List of 30 common spam words/phrases
+SPAM_KEYWORDS = [
+    "free", "winner", "cash", "urgent", "buy now", "limited time",
+    "act now", "guaranteed", "click here", "credit", "prize",
+    "congratulations", "offer expires", "risk free", "cheap",
+    "investment", "miracle", "weight loss", "money back", "viagra",
+    "luxury", "no cost", "order now", "get rich", "work from home",
+    "call now", "exclusive deal", "act immediately", "bargain",
+    "trial"
+]
+
+def calculate_spam_score(message):
+    """Calculate spam score and return score + list of matched words."""
+    message_lower = message.lower()
+    matched_words = [word for word in SPAM_KEYWORDS if word in message_lower]
+    score = len(matched_words)
+    return score, matched_words
+
+def spam_likelihood(score):
+    """Return likelihood rating based on spam score."""
+    if score == 0:
+        return "Not Spam"
+    elif score <= 3:
+        return "Low likelihood of Spam"
+    elif score <= 6:
+        return "Moderate likelihood of Spam"
+    else:
+        return "High likelihood of Spam"
+
+# --- Main program ---
+def main():
+    message = input("Enter your email message: ")
+    score, matched = calculate_spam_score(message)
+    rating = spam_likelihood(score)
+    
+    print("\n--- Spam Detection Results ---")
+    print(f"Spam Score: {score}")
+    print(f"Spam Likelihood: {rating}")
+    
+    if matched:
+        print("Matched Spam Words/Phrases:")
+        for word in matched:
+            print(f"- {word}")
+    else:
+        print("No spam words detected.")
+
+if __name__ == "__main__":
+    main()
