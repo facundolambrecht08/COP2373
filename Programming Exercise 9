@@ -1,0 +1,93 @@
+# Name: Facundo Lambrecht
+# Date Created: October 29, 2025
+# Program Description:
+# This program defines a BankAcct class that stores basic information
+# about a bank account, including name, account number, balance (amount),
+# and interest rate. It includes methods for depositing, withdrawing,
+# adjusting interest rates, checking balance, and calculating interest
+# over a given number of days. A test function demonstrates these features.
+
+class BankAcct:
+    def __init__(self, name, acct_number, amount=0.0, interest_rate=0.01):
+        """Initialize the bank account with name, account number, amount, and interest rate."""
+        self.name = name
+        self.acct_number = acct_number
+        self.amount = amount
+        self.interest_rate = interest_rate  # annual interest rate (e.g., 0.03 for 3%)
+
+    def deposit(self, deposit_amount):
+        """Deposit money into the account."""
+        if deposit_amount > 0:
+            self.amount += deposit_amount
+            print(f"Deposited ${deposit_amount:.2f}. New balance: ${self.amount:.2f}")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, withdraw_amount):
+        """Withdraw money from the account."""
+        if 0 < withdraw_amount <= self.amount:
+            self.amount -= withdraw_amount
+            print(f"Withdrew ${withdraw_amount:.2f}. New balance: ${self.amount:.2f}")
+        else:
+            print("Invalid withdrawal amount or insufficient funds.")
+
+    def adjust_interest_rate(self, new_rate):
+        """Adjust the interest rate."""
+        if new_rate >= 0:
+            self.interest_rate = new_rate
+            print(f"Interest rate adjusted to {self.interest_rate * 100:.2f}%.")
+        else:
+            print("Interest rate cannot be negative.")
+
+    def calculate_interest(self, days):
+        """Calculate the interest earned over a number of days."""
+        if days < 0:
+            print("Number of days cannot be negative.")
+            return 0
+        interest = self.amount * (self.interest_rate / 365) * days
+        print(f"Interest for {days} days: ${interest:.2f}")
+        return interest
+
+    def get_balance(self):
+        """Return the current balance."""
+        return self.amount
+
+    def __str__(self):
+        """Return a string representation of the account summary."""
+        return (f"Account Holder: {self.name}\n"
+                f"Account Number: {self.acct_number}\n"
+                f"Balance: ${self.amount:.2f}\n"
+                f"Interest Rate: {self.interest_rate * 100:.2f}%")
+
+
+# --------------------------------------------------
+# Test function
+# --------------------------------------------------
+
+def test_BankAcct():
+    print("=== Testing BankAcct Class ===")
+
+    # Create a new account
+    acct = BankAcct("Facundo Lambrecht", "123456", 1000.0, 0.03)
+    print(acct)
+
+    # Deposit money
+    acct.deposit(500)
+
+    # Withdraw money
+    acct.withdraw(200)
+
+    # Adjust interest rate
+    acct.adjust_interest_rate(0.05)
+
+    # Calculate interest for 30 days
+    acct.calculate_interest(30)
+
+    # Show final account info
+    print("\nFinal Account Info:")
+    print(acct)
+
+
+# Run the test
+if __name__ == "__main__":
+    test_BankAcct()
